@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block func_name %}Nuyuton Iteratsiya{% endblock %}
+{% block body %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f4f8;
+        margin: 20px;
+    }
+    h2 {
+        color: #3478f6;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #3478f6;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #e0e0e0;
+    }
+    .btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .btn-success {
+        background-color: #28a745;
+    }
+    .btn-success:hover {
+        background-color: #218838;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+    .mt-4 {
+        margin-top: 20px;
+    }
+</style>
+
+{% if results %}
+    {% if results[0].error %}
+        <h2 class="text-danger">Xatolik: {{ results[0].error }}</h2>
+    {% else %}<table>
+        <tr>
+            <th>Iteratsiya</th>
+            <th>x</th>
+            <th>y</th>
+            <th>f1(x, y)</th>
+            <th>f2(x, y)</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.iteration }}</td>
+                <td>{{ result.x }}</td>
+                <td>{{ result.y }}</td>
+                <td>{{ result['f1(x, y)'] }}</td>
+                <td>{{ result['f2(x, y)'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    
+    <br>
+    <div class="mt-4">
+        <a href="{{ url_for('download_file', file_name=filename.replace('.json', '')) }}" class="btn btn-success">
+            📥 JSON natijani yuklab olish
+        </a>
+        
+        <a href="/" class="btn btn-secondary">🔙 Orqaga qaytish</a>
+    </div>
+{% endif %}
+{% endblock %}

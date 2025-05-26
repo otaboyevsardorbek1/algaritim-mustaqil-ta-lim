@@ -1,0 +1,52 @@
+https://dash.plotly.com/installation
+
+APP_NAME=EasyCalc
+import os
+
+current_dir = os.getcwd()
+final_dir = os.path.join(current_dir, 'png')
+
+def file_path(path:str):
+    if not os.path.exists(final_dir):
+       os.makedirs(final_dir)
+    db_path = os.path.join(final_dir, path)
+    return db_path
+
+funqsiyaning ko`rinishi misol uchun 
+{func1<-->np.sin(x,y)=0
+{func2<-->np.cos(x,y)=0
+bo`lsa
+kirituvchi qiymatlar
+func1(x,y)
+func2(x,y)
+start_x=float(any)
+start_y=float(any)
+Epsilon=float(any)
+
+itaratsion usul namunasi
+{f1(x,y)=12
+{f2(x,y)=21 
+12=g1(x,y)
+21=g2(x,y)
+x0=0
+y0=0
+
+1-xisoblash x1=g1(x0,yo) , y1=g2(x0,yo)
+2-xisoblash x2=g1(x1,y1) , y2=g2(x1,x1)
+3-xisoblash x3=g1(x2,y2) , y3=g1(x2,y2)
+...
+
+math funcs(){
+   k=0
+   x=func1(start_x,start_y)
+   y=func2(start_x,start_y)
+   while(abs(x-x0)+abs(y-y0)>Epsilon){
+      print(x)
+      print(y)
+      k=k+1
+      start_x=x
+      start_y=y
+      x=func1(start_x,start_y)
+      y=func2(start_x,start_y)
+   }
+}
