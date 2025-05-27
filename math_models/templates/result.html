@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Natijalar</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        table, th, td { border: 1px solid #000; border-collapse: collapse; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        .container { max-width: 900px; margin: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Regressiya Tahlili Natijalari:</h1>
+
+        <h3>Koeffitsiyentlar:</h3>
+        <ul>
+            <li>β₀: {{ results.coefficients.beta_0 }}</li>
+            <li>β₁: {{ results.coefficients.beta_1 }}</li>
+            <li>β₂: {{ results.coefficients.beta_2 }}</li>
+        </ul>
+
+        <h3>Kuzatishlar:</h3>
+        <table>
+            <tr>
+                <th>x₁</th>
+                <th>x₂</th>
+                <th>Y (haqiqiy)</th>
+                <th>Ŷ (bashorat)</th>
+                <th>Nisbiy xatolik (%)</th>
+            </tr>
+            {% for row in results.predictions %}
+            <tr>
+                <td>{{ row.x_1 }}</td>
+                <td>{{ row.x_2 }}</td>
+                <td>{{ row.y_actual }}</td>
+                <td>{{ row.y_predicted }}</td>
+                <td>{{ row.relative_error }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Qo‘shimcha Natijalar:</h3>
+        <ul>
+            <li>O‘rtacha nisbiy xatolik: {{ results.mean_relative_error }}%</li>
+            <li>R²: {{ results.r_squared }}</li>
+            <li>Hisoblash vaqti: {{ results.execution_time }}</li>
+        </ul>
+
+        <h3>Grafik:</h3>
+        <iframe src="/static/main1.html" width="100%" height="500"></iframe>
+        <br><br>
+        <h1><a href="/">Yangi hisoblash →</a></h1>
+    </div>
+</body>
+</html>
