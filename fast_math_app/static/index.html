@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regressiya Analizi</title>
+</head>
+<body>
+    <h2>Ma'lumotlarni kiriting</h2>
+    <form method="post" action="/hisobla">
+        <label>X1 (vergul bilan):</label><br>
+        <input type="text" name="x1" required><br><br>
+        <label>X2 (vergul bilan):</label><br>
+        <input type="text" name="x2" required><br><br>
+        <label>Y (vergul bilan):</label><br>
+        <input type="text" name="y" required><br><br>
+
+        <label>Model turi:</label><br>
+        <select name="tur">
+            <option value="2D">2D</option>
+            <option value="3D">3D</option>
+        </select><br><br>
+
+        <button type="submit">Hisobla</button>
+    </form>
+
+    {% if natija %}
+        <h3>Natijalar:</h3>
+        <p><strong>R²:</strong> {{ natija.r_squared }}</p>
+        <p><strong>O'rtacha xato (%):</strong> {{ natija.mean_relative_error_percent or natija.mean_relative_error }}</p>
+
+        {% if natija.graph_filename %}
+            <h3>Grafik:</h3>
+            <iframe src="{{ natija.graph_filename }}" width="1000" height="1000"></iframe>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
