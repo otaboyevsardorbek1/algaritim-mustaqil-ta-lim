@@ -1,0 +1,35 @@
+# __pycache__ va Python kompilyatsiya fayllari
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environmentlar
+venv/
+env/
+ENV/
+.venv/
+
+# OS (tizim) fayllari
+.DS_Store
+Thumbs.db
+
+# IDE fayllari (VSCode, PyCharm, va h.k.)
+.vscode/
+.idea/
+
+# Mahalliy fayllar
+*.log
+*.sqlite3
+*.db
+*.bak
+
+# Plotly tomonidan yaratilgan grafik fayllari (agar ular vaqtincha bo‘lsa)
+static/main1.html
+
+# Render, Heroku yoki boshqa hosting fayllari
+*.env
+.env
