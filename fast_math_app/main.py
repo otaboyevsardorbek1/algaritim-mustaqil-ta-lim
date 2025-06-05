@@ -41,3 +41,4 @@ async def hisobla(
         "tur": tur
     })
 
+# run cammand python -m uvicorn main:app --reload
